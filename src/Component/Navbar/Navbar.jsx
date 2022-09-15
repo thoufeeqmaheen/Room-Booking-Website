@@ -15,9 +15,10 @@ const [navoption, setOption] = useState('Home')
           <NavLink to="/" className='link' style={navoption==='Home'?{color:'orange' }:{color:'black'}} >HomePage</NavLink> </div>
    
           <div className={navoption==='Room'? 'selected' : 'options'}onClick={()=>{setOption('Room')}} >
-          <NavLink to="room" className='link' style={navoption==='Room'?{color:'orange' }:{color:'black'}} >Room</NavLink>
+          <NavLink to="/room" className='link' style={navoption==='Room'?{color:'orange' }:{color:'black'}} >Room</NavLink>
           </div>
-          <div className={navoption==='Booking'? 'selected' : 'options'}onClick={()=>{setOption('Booking')}} >Booking
+          <div className={navoption==='Booking'? 'selected' : 'options'}onClick={()=>{setOption('Booking')}} >
+          <NavLink to="/Booking" className='link' style={navoption==='Booking'?{color:'orange' }:{color:'black'}} >Booking</NavLink>
           </div>
 
 

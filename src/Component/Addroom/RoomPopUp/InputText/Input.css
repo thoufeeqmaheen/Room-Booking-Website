@@ -1,0 +1,11 @@
+.boxdesign{
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 44%;
+    border: 0.5px solid lightgrey;
+}
+.boxtext{
+    margin-top: 6px;
+}
+

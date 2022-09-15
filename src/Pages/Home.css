@@ -19,6 +19,7 @@
     border-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
+    height: 35px;
 }
 .text{
     display: flex;
