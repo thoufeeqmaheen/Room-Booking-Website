@@ -14,7 +14,12 @@
  display: flex;
  align-items: center;
  justify-content: space-between;
+ flex-wrap: wrap;
 }
 .newbknbtn{
- color: orange;   
+ color: orange;  
+ text-decoration: none; 
+}
+.getbttn{
+    margin-top: 10px;
 }

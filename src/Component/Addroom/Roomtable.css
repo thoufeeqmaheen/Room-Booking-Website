@@ -5,7 +5,7 @@
     grid-template-columns: 2fr 2fr 2fr 2fr;
     place-items: center;
     border: 1px solid lightgray;
-    height: 50px;
+    padding: 11px;
 }
 .list{
     height: 314px;
@@ -39,4 +39,14 @@ margin-top: 20px;
 }
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+  }
+
+  @media only screen and (max-width: 689px) {
+
+    .room3,.valuetableroom{
+    display: grid;
+    grid-template-columns: none;
+
+
+}
   }

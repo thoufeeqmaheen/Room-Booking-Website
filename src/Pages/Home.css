@@ -1,7 +1,7 @@
 .roomimg{
     background-image: url(./hotel.png);
     height: 400px;
-    width: 100%;
+    width: 111%;
     margin-top: 44px;
 }
 .details{
@@ -15,11 +15,12 @@
     border: none;
     color: white;
     background-color: orange;
-    width: 80px;
+    /* width: 80px; */
     border-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
     height: 35px;
+    padding: 10px;
 }
 .text{
     display: flex;
@@ -40,6 +41,7 @@
     height: 292px;
     margin: 26px;
 }
+
     
 
     
@@ -50,7 +52,7 @@
     /* border: 1px solid black; */
     /* margin-bottom: 8px; */
     /* box-shadow: 0 0 2px 0px; */
-    border: 0.5px solid;
+    border: 0.5px solid lightgrey;
     font-family: Arial, Helvetica, sans-serif;
 
 
@@ -61,7 +63,7 @@ body{
 .datas{
     overflow: scroll;
     margin-top: 22px;
-    border: 0.5px solid;
+    /* border: 0.5px solid; */
     
 }
 .names{
@@ -70,6 +72,7 @@ body{
 ::-webkit-scrollbar {
     display: none;
 }
+
 
 
 

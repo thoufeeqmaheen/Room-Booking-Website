@@ -16,6 +16,7 @@ const Home = () => {
     <Checkbox boxicon={icon3} data={outdata} title='Check Out Today' text='Check out' />
     </div>
     </div>
+
   )
 }
 

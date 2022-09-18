@@ -16,6 +16,7 @@ const Roomdetails = ({data}) => {
     <div className='roombox'>
         <div className='room01'>
         <div className='roomtitle'>Rooms</div>
+
         {/* <Addroombtn className='btnroom'/> */}
         <Button text='+AddRoom' func={Popuproom}/>
         </div>

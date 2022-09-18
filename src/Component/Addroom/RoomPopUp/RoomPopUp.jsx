@@ -18,18 +18,20 @@ const RoomPopUp = ({setAddroom}) => {
   
   return (
     <div className='roomtablepop'>
-    <div className='roomtitle2'>Rooms</div>
+    <div className='roomtitle2'>Room {Room}</div>
 
     <form method='post' onSubmit={sentData} >
-    <InputComponent  text='Room Number' setState={setRoom}/>
-    <InputComponent text='Adult Capacity' setState={setAdult}/>
-    <InputComponent text='Children Capacity'setState={setChild}/>
-    <InputComponent text='Price'setState={setPrice}/>
+    <InputComponent type='Number' text='Room Number'  setState={setRoom}/>
+    <InputComponent type='Number' text='Adult Capacity' setState={setAdult}/>
+    <InputComponent type='Number' text='Children Capacity'setState={setChild}/>
+    <InputComponent type='Number' text='Price'setState={setPrice}/>
     <div className='pop-bttn'>
     <Button  text='Save'/> 
     <div>or</div>
     <div className='cancel' onClick={()=>{setAddroom(false)}}>Cancel</div>
     </div>
+    <div className="roomtitle2">Amenities</div>
+    
     </form>
     
 
