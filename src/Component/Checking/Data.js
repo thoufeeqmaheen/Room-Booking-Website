@@ -3,11 +3,11 @@
 
 
 export const indata=[
-    {'name':'Shiva','date':'01/05/2020','roomno':'201'},
-    {'name':'Reshma','date':'05/05/2020','roomno':'202'},
-    {'name':'Bismi','date':'10/05/2020','roomno':'203'},
-    {'name':'Rahul','date':'15/05/2020','roomno':'406'},
-    {'name':'Govind','date':'26/05/2020','roomno':'890'}
+    {'name':'Shiva','date':'01/05/2020','roomno':'201','inorout':'Checked In'},
+    {'name':'Reshma','date':'01/05/2020','roomno':'202','inorout':'Checked In'},
+    {'name':'Bismi','date':'01/05/2020','roomno':'203','inorout':'Checked In'},
+    {'name':'Rahul','date':'01/05/2020','roomno':'406','inorout':'Checked In'},
+    {'name':'Govind','date':'01/05/2020','roomno':'890','inorout':'Checked In'}
 
 
 ]

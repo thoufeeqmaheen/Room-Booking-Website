@@ -12,8 +12,8 @@ const Home = () => {
     <Navbar/>
     <div className='roomimg'></div>
     <div className='details'>
-    <Checkbox boxicon={icon4} data={indata} title='Check In Today' text='Checkin' />
-    <Checkbox boxicon={icon3} data={outdata} title='Check Out Today' text='Check out' />
+    <Checkbox boxicon={icon4} data={indata} title='Checked In Today' text='Checkin' />
+    <Checkbox boxicon={icon3} data={outdata} title='Checked Out Today' text='Check out' />
     </div>
     </div>
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../Button/Button'
-const Box = ({data,text}) => {
+// import Button from '../Button/Button'
+const Box = ({data,inorout}) => {
   return (
     <div className='chkbox'>
     <div className='people'>
@@ -8,7 +8,10 @@ const Box = ({data,text}) => {
         <div>{data.date}</div>
     </div>
     <div>{data.roomno}</div>
-    <Button text={text} />
+    <div></div>
+
+    {/* <Button text={text} /> */}
+    <div className='inorout'>{data.inorout}</div>
     
 
 </div>

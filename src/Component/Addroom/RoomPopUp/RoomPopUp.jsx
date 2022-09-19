@@ -30,7 +30,7 @@ const RoomPopUp = ({setAddroom}) => {
     <div>or</div>
     <div className='cancel' onClick={()=>{setAddroom(false)}}>Cancel</div>
     </div>
-    <div className="roomtitle2">Amenities</div>
+    {/* <div className="roomtitle2">Amenities</div> */}
     
     </form>
     
