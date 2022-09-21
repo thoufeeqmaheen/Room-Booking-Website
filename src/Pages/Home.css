@@ -1,7 +1,7 @@
 .roomimg{
     background-image: url(./hotel.png);
     height: 400px;
-    width: 111%;
+    width: 100%;
     margin-top: 44px;
 }
 .details{
@@ -71,7 +71,7 @@ body{
     font-weight: 700;
 }
 .inorout{
-    color: orange;
+    font-weight: 600;
 }
 ::-webkit-scrollbar {
     display: none;

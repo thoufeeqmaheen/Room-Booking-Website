@@ -18,10 +18,20 @@
     margin-top: 24px;
 }
 .fstname{
-    font-weight: 700;
+    font-weight: 600;
 }
 .green{
-    color: green;
+    font-weight: 600;
+}
+@media only screen and (max-width: 893px) {
+    .Bookigstable{
+        font-size: 13px;
+}
+}
+@media only screen and (max-width: 758px) {
+    .Bookigstable{
+        font-size: 11px;
+}
 }
 @media only screen and (max-width: 689px) {
 
@@ -31,6 +41,10 @@
 .datasbookings{
     display: grid;
     grid-template-columns: none;
+}
+.bookingbox{
+    margin:0;
+    box-shadow: none;
 }
 
 

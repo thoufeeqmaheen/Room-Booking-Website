@@ -4,7 +4,7 @@ import Roomtable from './Roomtable'
 import Button from '../Button/Button'
 import RoomPopUp from './RoomPopUp/RoomPopUp'
 import { useState } from 'react'
-const Roomdetails = ({data}) => {
+const Roomdetails = ({data, amdata, setEditbtn}) => {
 
    const [addroom,setAddroom]=useState(false);
     function Popuproom() {
@@ -20,7 +20,8 @@ const Roomdetails = ({data}) => {
         {/* <Addroombtn className='btnroom'/> */}
         <Button text='+AddRoom' func={Popuproom}/>
         </div>
-        <Roomtable data={data}/>
+        <Roomtable data={data} amdata={amdata} setEditbtn={setAddroom} />
+        
         
       <div className={addroom?"Popuproom":""}  >
       {addroom && <RoomPopUp setAddroom={setAddroom}/>}
