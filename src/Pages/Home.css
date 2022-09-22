@@ -19,8 +19,8 @@
     border-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
-    height: 46px;
-    padding: 10px;
+    height: 46%;
+    padding: 10%;
 }
 .text{
     display: flex;
@@ -90,6 +90,7 @@ body{
 }
 .bttns{
     display: flex;
+    flex-wrap: wrap;
 }
 .bookingbttns{
     margin-top: 10px;
