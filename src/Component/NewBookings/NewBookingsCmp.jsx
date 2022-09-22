@@ -38,7 +38,7 @@ const NewBookingsCmp = () => {
             <Button text='Get Available Room' func={()=>{setGetavl(!getavl);
               console.log(getavl);}} />
             
-              <div>{getavl ? <div className='getbttn'>  <Button2 classN='bttn2' text='Book' funcbtn={()=>{setBook(!book)}} /> <div onClick={()=>{Navigate(-1)}} >Back</div> </div>:""}</div>
+              <div>{getavl ? <div className='getbttn'>  <Button2 classN='bttn2' text='Book' funcbtn={()=>{setBook(!book)}} /> <div className='back' onClick={()=>{Navigate(-1)}} >Back</div> </div>:""}</div>
               
               </div>
               {book && <div className='bttns' >
