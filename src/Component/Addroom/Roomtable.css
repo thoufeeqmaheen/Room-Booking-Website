@@ -93,6 +93,10 @@ input[type=number]::-webkit-inner-spin-button {
     grid-template-columns: 5fr 1fr;
 }
 .roomtablepop{
+    width: 83%;
+    position: absolute;
+    left: 8%;
+    top: 6%;
 
 overflow: scroll;
 }
@@ -103,7 +107,9 @@ overflow: scroll;
 body{
     background-color: rgb(239, 239, 239);
 }
-
+.Popuproom{
+    background-color: rgb(239, 239, 239);
+}
 }
   
   @media only screen and (max-width: 796px) {

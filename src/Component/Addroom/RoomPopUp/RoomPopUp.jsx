@@ -48,7 +48,7 @@ const[selectArray,setSelectArray]=useState([])
     
     <select className='addselect' onChange={(e)=>{setSelectArray([...selectArray,e.target.value])}}>
           <option >Select</option>
-          <option value="Telivision">Teleivsion</option>
+          <option value="Television">Teleivsion</option>
           <option value="A/C">A/C</option>
           <option value="Fridge">Fridge</option>
           <option value="Water Heater">Water Heater</option>
