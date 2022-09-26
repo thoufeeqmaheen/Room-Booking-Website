@@ -7,7 +7,8 @@ import { useEffect } from 'react'
 import apiCall from '../../../Services/apiCall'
 
 
-const RoomPopUp = ({setAddroom,isEditing=false,data=null}) => {
+const 
+RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
 
   const [formData,setFormData] = useState({
     roomNumber: "",
@@ -48,7 +49,10 @@ const RoomPopUp = ({setAddroom,isEditing=false,data=null}) => {
 
     <div className='roomtitle2'>Room {roomNumber}
     
-    <div className="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height='28' width='38'onClick={()=>{setAddroom(false)}} ><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" /></svg></div>
+    <div className="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height='28' width='38'onClick={()=>{
+      setAddroom(false);
+      setisEditing(false);
+  }} ><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" /></svg></div>
     </div>
 
     <form onSubmit={sentData} >
@@ -60,7 +64,7 @@ const RoomPopUp = ({setAddroom,isEditing=false,data=null}) => {
     <Button  text='Save'/> 
     </div>
     </form>
-    {/* {isEditing &&  } */}
+    {isEditing &&  
     
     <div className="ammn">
     <div className="addtitle">Amenities</div>
@@ -71,7 +75,7 @@ const RoomPopUp = ({setAddroom,isEditing=false,data=null}) => {
     </form> */}
     
     
-    <select className='addselect' onChange={(e)=>{setSelect([...select,e.target.value])}}>
+    <select className='addselect'  onChange={(e)=>{setSelect([...select,e.target.value])}}>
           <option >Select</option>
           <option value="Television">Teleivsion</option>
           <option value="A/C">A/C</option>
@@ -85,6 +89,7 @@ const RoomPopUp = ({setAddroom,isEditing=false,data=null}) => {
         </select>
 
       </div>
+}
       <div className='selectdata'>
         {select.map((data, index) => {
           return (

@@ -8,6 +8,7 @@ const Roomdetails = ({data, amdata, setEditbtn}) => {
 
    const [addroom,setAddroom]=useState(false);
     const [roomData,setRoomdata]=useState([]);
+    const [isEditing, setisEditing] = useState(false);
 
     useEffect(() => {
       fetch("http://192.168.1.51:8000/rooms")
@@ -36,11 +37,11 @@ const Roomdetails = ({data, amdata, setEditbtn}) => {
         {/* <Addroombtn className='btnroom'/> */}
         <Button text='+AddRoom' func={Popuproom}/>
         </div>
-        <Roomtable data={roomData} setEditbtn={setAddroom} />
+        <Roomtable data={roomData} setEditbtn={setAddroom} setisEditing={setisEditing} />
         
         
       <div className={addroom?"Popuproom":""}  >
-      {addroom && <RoomPopUp setAddroom={setAddroom}/>}
+      {addroom && <RoomPopUp setAddroom={setAddroom} setisEditing={setisEditing} isEditing={isEditing}/>}
       </div>
     </div>
   )

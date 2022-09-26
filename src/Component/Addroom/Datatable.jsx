@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Datatable = ({data,setEditbtn}) => {
+const Datatable = ({data,setEditbtn,setisEditing}) => {
   return (
     <div className='valuetableroom'>
     <div className="tablevalue">
@@ -9,7 +9,10 @@ const Datatable = ({data,setEditbtn}) => {
     <div>{data.childCapacity}</div>
     <div className='red'>{data.price}</div>
     </div><div className='threebtndiv'>
-    <div className='threebtn' onClick={()=>{setEditbtn(true)}}>< svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" height='15' width='30'><path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z"/></svg>
+    <div className='threebtn' onClick={()=>{
+      setEditbtn(true)
+      setisEditing(true)
+    }}>< svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" height='15' width='30'><path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z"/></svg>
     </div></div>
     </div>
   )

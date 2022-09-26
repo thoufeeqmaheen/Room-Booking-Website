@@ -2,7 +2,7 @@ import React from 'react'
 import '../Addroom/Roomtable.css'
 import Datatable from './Datatable'
 
-const Roomtable = ({data,setEditbtn}) => {
+const Roomtable = ({data,setEditbtn ,setisEditing}) => {
   return (
    <div className='roomtabletitle'>
     <div className="mainroomtable">
@@ -20,7 +20,7 @@ const Roomtable = ({data,setEditbtn}) => {
     <div className='list'>
     {data.map((data,index)=>{
         return(
-            <Datatable data={data} key={index} setEditbtn={setEditbtn}/>
+            <Datatable data={data} key={index} setEditbtn={setEditbtn} setisEditing={setisEditing}/>
 
         )
     })}
