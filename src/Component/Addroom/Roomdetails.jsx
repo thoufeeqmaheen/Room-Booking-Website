@@ -3,10 +3,26 @@ import '../Addroom/Roomdetails.css'
 import Roomtable from './Roomtable'
 import Button from '../Button/Button'
 import RoomPopUp from './RoomPopUp/RoomPopUp'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 const Roomdetails = ({data, amdata, setEditbtn}) => {
 
    const [addroom,setAddroom]=useState(false);
+    const [roomData,setRoomdata]=useState([]);
+
+    useEffect(() => {
+      fetch("http://192.168.1.51:8000/rooms")
+      .then(res=>res.json())
+      .then(response=>{
+        console.log(response);
+        setRoomdata(response);
+      })
+    
+    }, [addroom])
+    
+
+
+
+
     function Popuproom() {
       setAddroom(true);
       
@@ -20,7 +36,7 @@ const Roomdetails = ({data, amdata, setEditbtn}) => {
         {/* <Addroombtn className='btnroom'/> */}
         <Button text='+AddRoom' func={Popuproom}/>
         </div>
-        <Roomtable data={data} amdata={amdata} setEditbtn={setAddroom} />
+        <Roomtable data={roomData} setEditbtn={setAddroom} />
         
         
       <div className={addroom?"Popuproom":""}  >
