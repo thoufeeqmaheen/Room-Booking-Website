@@ -71,7 +71,7 @@ RoomPopUp = ({setAddroom,roomData,Editingid,setEditingid}) => {
   }
 
   const addAmenities=(value)=>{
-    if(value && !amenities.includes(value)){
+    if( value && !amenities.includes(value)){
     onChange([...amenities,value],"amenities")
     }
   }
