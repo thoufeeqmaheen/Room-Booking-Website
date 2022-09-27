@@ -20,6 +20,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 25px;
+    cursor: pointer;
 }
 
 .mainroomtable{
@@ -57,19 +59,19 @@ margin-top: 20px;
 .Popuproom{
     backdrop-filter: blur(5px);
     width: 100%;
-    height: 125vh;
+    height: 100vh;
     position: absolute;
     top: 0px;
     left:0%;
+    display: grid;
+    place-items: center;
+
     
     
 }
 .roomtext{
     color: blue;
     font-weight: 600;
-}
-.tablevalue{
-    
 }
 
 input[type=number]::-webkit-inner-spin-button {

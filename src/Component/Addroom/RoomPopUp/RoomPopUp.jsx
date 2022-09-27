@@ -8,25 +8,30 @@ import apiCall from '../../../Services/apiCall'
 
 
 const 
-RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
+RoomPopUp = ({setAddroom,roomData,Editingid,setEditingid}) => {
 
   const [formData,setFormData] = useState({
     roomNumber: "",
     adultCapacity: "",
     childCapacity: "",
-    price: ""
+    price: "",
+    amenities:[]
   });
 
   useEffect(()=>{
 
-    if(data)setFormData({roomNumber: data.roomnumber,
-    adultCapacity: data.adultcapacity,
-    childCapacity: data.childrencapacity,
-    price: data.price});
+  //   if(data)setFormData({roomNumber: data.roomnumber,
+  //   adultCapacity: data.adultcapacity,
+  //   childCapacity: data.childrencapacity,
+  //   price: data.price});
 
-  },[data])
+  // },[data])
 
-  const {roomNumber,adultCapacity,childCapacity,price} = formData;
+  if(Editingid) { setFormData (roomData.find(r=>r.id===Editingid))
+  } 
+  },[Editingid])
+
+  const {roomNumber,adultCapacity,childCapacity,price,amenities} = formData;
 
   const onChange = (value,key)=>{
     setFormData({
@@ -34,13 +39,41 @@ RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
       [key]: value
     })
   }
-  const [select,setSelect]=useState([])
-  const sentData=(e)=>{
-    e.preventDefault();
-    console.log(formData);
-    apiCall("/rooms","POST",formData)
-    .then((res)=>console.log(res))
+  // const [select,setSelect]=useState([])
   
+
+
+  const sentData=async(e)=>{
+    e.preventDefault();
+    let res;
+    if(Editingid){
+      res=await updateRoom()
+
+    }
+    else{
+      res=await addRoom()
+    }
+    console.log(res);
+ 
+
+  
+    console.log(formData);
+    //  apiCall("/rooms","POST",formData)
+    // .then((res)=>console.log(res))
+    closeWindow();
+  };
+  const updateRoom=()=>apiCall(`/rooms/${formData.id}`,"PUT",formData)
+  const addRoom=()=>apiCall("/rooms","POST",formData)
+
+  const closeWindow=()=>{
+    setAddroom(false)
+    setEditingid(null)
+  }
+
+  const addAmenities=(value)=>{
+    if(value && !amenities.includes(value)){
+    onChange([...amenities,value],"amenities")
+    }
   }
   
   return (
@@ -49,10 +82,8 @@ RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
 
     <div className='roomtitle2'>Room {roomNumber}
     
-    <div className="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height='28' width='38'onClick={()=>{
-      setAddroom(false);
-      setisEditing(false);
-  }} ><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" /></svg></div>
+    <div className="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height='28' width='38'onClick={
+      closeWindow} ><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" /></svg></div>
     </div>
 
     <form onSubmit={sentData} >
@@ -64,7 +95,7 @@ RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
     <Button  text='Save'/> 
     </div>
     </form>
-    {isEditing &&  
+    {Editingid &&  
     
     <div className="ammn">
     <div className="addtitle">Amenities</div>
@@ -75,7 +106,7 @@ RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
     </form> */}
     
     
-    <select className='addselect'  onChange={(e)=>{setSelect([...select,e.target.value])}}>
+    <select className='addselect'  onChange={(e)=>{addAmenities(e.target.value)}}>
           <option >Select</option>
           <option value="Television">Teleivsion</option>
           <option value="A/C">A/C</option>
@@ -91,9 +122,9 @@ RoomPopUp = ({setAddroom,setisEditing,isEditing,data=null}) => {
       </div>
 }
       <div className='selectdata'>
-        {select.map((data, index) => {
+        {amenities.map((data, index) => {
           return (
-            <Selected select={select} data={data} key={index} index={index} setSelect={setSelect} />
+            <Selected data={data} key={index} index={index} select={amenities} setSelect={(value)=>onChange(value,"amenities")} />
           )
         })}
    

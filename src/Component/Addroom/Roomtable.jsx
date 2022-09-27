@@ -2,7 +2,7 @@ import React from 'react'
 import '../Addroom/Roomtable.css'
 import Datatable from './Datatable'
 
-const Roomtable = ({data,setEditbtn ,setisEditing}) => {
+const Roomtable = ({roomData ,setEditingid,setEditbtn ,setdeleteId,deleteRoom}) => {
   return (
    <div className='roomtabletitle'>
     <div className="mainroomtable">
@@ -11,6 +11,7 @@ const Roomtable = ({data,setEditbtn ,setisEditing}) => {
     <div className='roomtext'>Adult Capacity</div>
     <div className='roomtext'>Children Capacity</div>
     <div className='roomtext'>Price</div>
+    
   
     </div>
     <div>
@@ -18,9 +19,9 @@ const Roomtable = ({data,setEditbtn ,setisEditing}) => {
     </div>
     </div>
     <div className='list'>
-    {data.map((data,index)=>{
+    {roomData.map((data,index)=>{
         return(
-            <Datatable data={data} key={index} setEditbtn={setEditbtn} setisEditing={setisEditing}/>
+            <Datatable data={data}  key={data.id}  setEditingid={setEditingid} setEditbtn={setEditbtn}  deleteRoom={deleteRoom}  setdeleteId={setdeleteId} />
 
         )
     })}
@@ -28,5 +29,6 @@ const Roomtable = ({data,setEditbtn ,setisEditing}) => {
    </div>
   )
 }
+// setEditbtn={setEditbtn} setisEditing={setisEditing
 
 export default Roomtable
