@@ -71,8 +71,8 @@ RoomPopUp = ({setAddroom,roomData,Editingid,setEditingid}) => {
   }
 
   const addAmenities=(value)=>{
-    if( value && !amenities.includes(value)){
-    onChange([...amenities,value],"amenities")
+    if( value && !amenities.map(a=>a.text).includes(value)){
+    onChange([...amenities,{text:value}],"amenities")
     }
   }
   
@@ -124,7 +124,7 @@ RoomPopUp = ({setAddroom,roomData,Editingid,setEditingid}) => {
       <div className='selectdata'>
         {amenities.map((data, index) => {
           return (
-            <Selected data={data} key={index} index={index} select={amenities} setSelect={(value)=>onChange(value,"amenities")} />
+            <Selected data={data.text} key={index} index={index} select={amenities} setSelect={(value)=>onChange(value,"amenities")} />
           )
         })}
    
