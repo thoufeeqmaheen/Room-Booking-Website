@@ -3,11 +3,11 @@ import React from 'react'
 const DatasBooking = ({data}) => {
   return (
         <div className='datasbookings'>
-            <div className='fstname'>{data.guest}</div>
-            <div>{data.name}</div>
-            <div>{data.roomno}</div>
-            <div className='green'>{data.indate}</div>
-            <div className='red'>{data.outdata}</div>
+            <div className='fstname'>{data.guestFirstName}</div>
+            <div>{data.guestLastName}</div>
+            <div>{data.room.roomNumber}</div>
+            <div className='green'>{data.checkInDate}</div>
+            <div className='red'>{data.checkOutDate}</div>
             <div className='orange'>{data.status}</div>
 
 

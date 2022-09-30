@@ -5,43 +5,113 @@ import Button from '../Button/Button'
 import Button2 from '../Button/Button2'
 import '../../Pages/Home.css'
 import { useNavigate } from 'react-router-dom'
-
+import apiCall from '../../../src/Services/apiCall'
+// import { useEffect } from 'react'
 const NewBookingsCmp = () => {
 
-  const [guest, setGuest] = useState('')
-  const [first, setFirst] = useState('')
-  const [chkin, setChkin] = useState('')
-  const [chkout, setChkout] = useState('')
-  const [adult, setAdult] = useState('')
-  const [Child, setChild] = useState('')
-  const [getavl,setGetavl]= useState(false)
-  const [book,setBook]=useState(false)
+  // const [getavl,setGetavl]= useState(false)
+  // const [bookok,setBook]=useState(false)
   const Navigate =useNavigate()
+  const [room, setRoom] = useState(null)
 
-  const sentData=(e)=>{
-    e.preventDefault()
-    console.log(guest,first,chkin,chkout,adult,Child);
+
+
+ const [submitData, setsubmitData] = useState({
+  guestFirstName:"",
+  guestLastName:"",
+  checkInDate:"",
+  checkOutDate:"",
+  numberOfAdults:"",
+  numberOfChildren:""
+
+ })
+
+  // const [guest, setGuest] = useState('')
+  // const [first, setFirst] = useState('')
+  // const [chkin, setChkin] = useState('')
+  // const [chkout, setChkout] = useState('')
+  // const [adult, setAdult] = useState('')
+  // const [Child, setChild] = useState('')
+
+
+
+
+  const {guestFirstName,guestLastName,checkInDate,checkOutDate,numberOfAdults,numberOfChildren}=submitData
+  const onChange = (value,key)=>{
+    setsubmitData({
+      ...submitData,
+      [key]: value
+    })
   }
 
+  // const addBook=()=>apiCall("/booking","POST",submitData)
+
+const book=async()=>{
+  const booking=await addBook();
+  console.log(booking);
+  // setBook(true)
+  setBooknow(true)
+
+}
+
+const formatBooking=()=>{
+  return{
+    ...submitData,
+    checkInDate:new Date(submitData.checkInDate).toISOString(),
+    checkOutDate: new Date(submitData.checkOutDate).toISOString(),
+  }
+}
+
+const getAvailableroom=async()=>{
+  let room=await getRooms();
+  if(room.id){
+    setRoom(room);
+    console.log(room);
+    setGetAvailableroom(true)
+    setShow(true)
+  }
+}
+
+const [Show, setShow] = useState(false)
+  // const Bookroom =async(e)=>{
+  //   e.preventDefault(); 
+  //   console.log(submitData);
+  //    let res=await addBook();
+  
+  // };
+
+  const addBook=()=>apiCall("/booking","POST",{...formatBooking(),roomId:room.id,status:"Booked"})
+  const getRooms=()=>apiCall("/get-rooms","POST",formatBooking())
+
+  const [GetAvailableroom, setGetAvailableroom] = useState(false)
+  const [Booknow, setBooknow] = useState(false)
+
   return (
-    <div className='bookingbox'>
+    <div className='bookingbox' >
         <div className='bookingtitle'>New Bookings</div>
-        <form action="" onSubmit={sentData}>
-            <InputComponent type='Text' text='Guest Last Name' setState={setGuest}/>
-            <InputComponent type='Text' text='Guest First Name' setState={setFirst}/>
-            <InputComponent type='Date' text='Check In Date' setState={setChkin}/>
-            <InputComponent type='Date' text='Check Out Date' setState={setChkout}/>
-            <InputComponent type='Number' text='Number of Adult' setState={setAdult}/>
-            <InputComponent type='Number' text='Number of Children' setState={setChild}/>
+    
+            <InputComponent value={guestFirstName} type='Text' text='Guest First Name' setState={(value)=>onChange(value,"guestFirstName") }/>
+            <InputComponent value={guestLastName} type='Text' text='Guest Last Name' setState={(value)=>onChange(value,"guestLastName") }/>
+            <InputComponent value={checkInDate} type='Date' text='Check In Date' setState={(value)=>onChange(value,"checkInDate") }/>
+            <InputComponent value={checkOutDate} type='Date' text='Check Out Date' setState={(value)=>onChange(value,"checkOutDate") }/>
+            <InputComponent value={numberOfAdults} type='Number' text='Number of Adult' setState={(value)=>onChange(value,"numberOfAdults") }/>
+            <InputComponent value={numberOfChildren} type='Number' text='Number of Children' setState={(value)=>onChange(value,"numberOfChildren") }/>
+
+            {Show}
+
             <div className='bookingbttns'>
               <div className='getbttn'>
-            <Button text='Get Available Room' func={()=>{setGetavl(!getavl);
-              console.log(getavl);}} />
+                <div >
+           { <Button text='Get Available Room' func={getAvailableroom} />}
+            </div>
             
-              <div>{getavl ? <div className='getbttn'>  <Button2 classN='bttn2' text='Book' funcbtn={()=>{setBook(!book)}} /> <div className='back' onClick={()=>{Navigate(-1)}} >Back</div> </div>:""}</div>
+              <div>{GetAvailableroom && <div className='getbttn'> 
+               <Button2 classN='bttn2' text='Book' funcbtn={book} />
+                <div className='back' onClick={()=>{Navigate(-1)}} >Back</div> </div>}
+                </div>
               
               </div>
-              {book && <div className='bttns' >
+              {Booknow && <div className='bttns' >
               <div className='bttn2'>Check In</div > <div className='bttn2'>Check Out</div> <div className='bttn2'>Cancel</div>
 
               </div>}
@@ -50,7 +120,7 @@ const NewBookingsCmp = () => {
              
              
               </div>
-            </form>
+    
             
 
         

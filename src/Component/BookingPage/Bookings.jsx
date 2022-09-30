@@ -4,8 +4,30 @@ import './Bookingtable/Bookingstable'
 import Bookingstable from './Bookingtable/Bookingstable'
 import { NavLink } from 'react-router-dom'
 import Button from '../Button/Button'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import apiCall from '../../Services/apiCall'
 
-const Bookings = ({bookingdata}) => {
+const Bookings = ({value}) => {
+
+  const [bookData,setBookData]=useState([]);
+
+  useEffect(() => {
+    // fetch("http://localhost:8000/rooms")
+    apiCall("/booking")
+    // .then(res=>res.json())
+    .then(response=>{
+      console.log(response);
+      setBookData(response);
+    })
+  
+  }, [])
+
+
+
+
+
+  
   return (
     <div className='bookingbox'>
         <div className='bookingtitlediv'>
@@ -23,7 +45,7 @@ const Bookings = ({bookingdata}) => {
         </div>
         <div>
 
-            <Bookingstable data={bookingdata}/>
+            <Bookingstable bookData={bookData} />
         </div>
 
         

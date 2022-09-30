@@ -2,7 +2,7 @@ import React from 'react'
 import '../Bookingtable/Bookingstable.css'
 import DatasBooking from './DatasBooking'
 
-const Bookingstable = ({data}) => {
+const Bookingstable = ({bookData}) => {
   return (
     <div className='booktabletitle'>
       <div className='Bookigstable'>
@@ -14,7 +14,7 @@ const Bookingstable = ({data}) => {
       <div className='bookingtext'>Status</div>
       </div>
       <div className='bookslist'>
-        {data.map((data,index)=>{
+        {bookData.map((data,index)=>{
           return(
             <DatasBooking data={data} key={index} />
           )
