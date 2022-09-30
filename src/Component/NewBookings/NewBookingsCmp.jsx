@@ -96,9 +96,15 @@ const [Show, setShow] = useState(false)
             <InputComponent value={checkOutDate} type='Date' text='Check Out Date' setState={(value)=>onChange(value,"checkOutDate") }/>
             <InputComponent value={numberOfAdults} type='Number' text='Number of Adult' setState={(value)=>onChange(value,"numberOfAdults") }/>
             <InputComponent value={numberOfChildren} type='Number' text='Number of Children' setState={(value)=>onChange(value,"numberOfChildren") }/>
-
-            {Show}
-
+            <div className="showget">
+            {Show&& <div className="room">
+              <div>Room</div>
+              <div className="roomshow">{room.roomNumber}</div>
+              <div>at</div>
+              <div className="priceshow">{room.price}</div>
+              <div>per night</div>
+            </div> }
+            </div>
             <div className='bookingbttns'>
               <div className='getbttn'>
                 <div >
