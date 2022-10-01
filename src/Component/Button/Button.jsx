@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Button = ({text,func,wid}) => {
+const Button = ({text,func,wid,disabled=false}) => {
   return (
     <div>
-    <button className='bttn' onClick={func} width={wid} >{text}   </button>
+    <button className={`bttn ${disabled && "disabled"}`} onClick={(e)=>!disabled && func(e)} width={wid} >{text}   </button>
     </div>
   )
 }

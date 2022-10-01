@@ -91,10 +91,6 @@ RoomPopUp = ({setAddroom,roomData,Editingid,setEditingid}) => {
     <InputComponent value={adultCapacity} type='Number' text='Adult Capacity' setState={(value)=>onChange(value,"adultCapacity")}/>
     <InputComponent value={childCapacity}  type='Number' text='Children Capacity'setState={(value)=>onChange(value,"childCapacity")}/>
     <InputComponent value={price} type='Number' text='Price' setState={value=>onChange(value,"price")} />
-    <div className='pop-bttn'>
-    <Button  text='Save'/> 
-    </div>
-    </form>
     {Editingid &&  
     
     <div className="ammn">
@@ -129,7 +125,11 @@ RoomPopUp = ({setAddroom,roomData,Editingid,setEditingid}) => {
         })}
    
    </div>
+   <div className='pop-bttn'>
+    <Button  text='Save'/> 
+   </div>
    
+   </form>
     </div>
     
 
