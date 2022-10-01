@@ -14,6 +14,8 @@ const NewBookingsCmp = () => {
   const Navigate =useNavigate()
   const [room, setRoom] = useState(null)
 
+  const [Booking, setBooking] = useState(null)
+
 
 
  const [submitData, setsubmitData] = useState({
@@ -48,7 +50,7 @@ const NewBookingsCmp = () => {
 
 const book=async()=>{
   const booking=await addBook();
-  console.log(booking);
+  setBooking(booking);
   // setBook(true)
   setBooknow(true)
 
@@ -58,7 +60,7 @@ const formatBooking=()=>{
   return{
     ...submitData,
     checkInDate:new Date(submitData.checkInDate).toISOString(),
-    checkOutDate: new Date(submitData.checkOutDate).toISOString(),
+    checkOutDate: new Date(submitData.checkOutDate).toISOString()
   }
 }
 
@@ -80,8 +82,11 @@ const [Show, setShow] = useState(false)
   
   // };
 
+
+
   const addBook=()=>apiCall("/booking","POST",{...formatBooking(),roomId:room.id,status:"Booked"})
   const getRooms=()=>apiCall("/get-rooms","POST",formatBooking())
+  const updateStatus=(status)=>apiCall("/booking","PUT",{id:Booking.id,status})
 
   const [GetAvailableroom, setGetAvailableroom] = useState(false)
   const [Booknow, setBooknow] = useState(false)
@@ -118,7 +123,9 @@ const [Show, setShow] = useState(false)
               
               </div>
               {Booknow && <div className='bttns' >
-              <div className='bttn2'>Check In</div > <div className='bttn2'>Check Out</div> <div className='bttn2'>Cancel</div>
+              <div className='bttn2' onClick={()=>{updateStatus("Check In")}}>Check In</div >
+               <div className='bttn2' onClick={()=>{updateStatus("Check Out")}}>Check Out</div>
+                <div className='bttn2'onClick={()=>{updateStatus("Cancelled")}} >Cancel</div>
 
               </div>}
              
